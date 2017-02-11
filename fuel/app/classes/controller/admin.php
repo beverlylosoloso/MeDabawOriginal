@@ -74,7 +74,7 @@ class Controller_Admin extends Controller_Base
 			}
 		}
 
-		$this->template->title = '';
+		$this->template->title = "logo";
 		$this->template->content = View::forge('admin/login', array('val' => $val), false);
 	}
 

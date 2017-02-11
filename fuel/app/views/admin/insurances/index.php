@@ -15,9 +15,9 @@
 
 <table class="table table-striped">
 	<thead>
-		<tr>
+		<tr class = "danger">
 			<th>Insurance Name</th>
-			<th></th>
+			<th>What to do?</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -25,7 +25,6 @@
 <?php if ($current_user->id == $item->hospital_id): ?>
 			<td><?php echo $item->insurance_name; ?></td>
 			<td>
-				<?php echo Html::anchor('admin/insurances/view/'.$item->id, 'View' , array('class' =>'btn btn-danger btn-transparent')); ?> 
 				<?php echo Html::anchor('admin/insurances/edit/'.$item->id, 'Edit' , array('class' =>'btn btn-danger btn-transparent')); ?> 
 				<?php echo Html::anchor('admin/insurances/delete/'.$item->id, 'Delete', array('class' =>'btn btn-danger btn-transparent','onclick' => "return confirm('Are you sure?')")); ?>
 

@@ -90,7 +90,7 @@ class Controller_Admin_Pendings extends Controller_Admin
 			$email->to($tmp_email, 'kim');
 
 			// Set a subject
-			$email->subject('This is the subject');
+			$email->subject('Informing');
 
 			// Set multiple to addresses
 
@@ -100,7 +100,7 @@ class Controller_Admin_Pendings extends Controller_Admin
 			// ));
 
 			// And set the body.
-			$email->body("From: DOH \r\n Congratulations you are now accepted. You may now login to this link: (http://localhost/medabaw2/public/admin/login).");
+			$email->body("From: DOH - MeDabaw \r\n Congratulations you are now accepted. You may now login to this link: (http://localhost/medabaw2/public/admin/login).");
 
 			    try
 			    {
@@ -127,17 +127,62 @@ class Controller_Admin_Pendings extends Controller_Admin
 	}
 
 	public function action_delete($id = null)
-	{
-		if ($pending = Model_Pending::find($id))
-		{
-			$pending->delete();
 
-			Session::set_flash('success', e('Deleted pending #'.$id));
+	{
+		// email pag accept
+		$user = Model_User::find($id);
+
+		// Send Email
+			// Create an instance
+			$email = Email::forge();
+			
+			$tmp_email = $user->email; 
+			var_dump($tmp_email);
+			// Set the from address
+			$email->from('beverly.losoloso@jmc.edu.ph', 'Bebang');
+
+			// Set the to address
+			$email->to($tmp_email, 'kim');
+
+			// Set a subject
+			$email->subject('This is the subject');
+
+			// Set multiple to addresses
+
+			// $email->to(array(
+			//     'example@mail.com',
+			//     'another@mail.com' => 'With a Name',
+			// ));
+
+			// And set the body.
+			$email->body("From: DOH \r\n sorry Something blah.x .  You may now login to this link: (http://localhost/medabaw2/public/admin/login).");
+
+			    try
+			    {
+			        $email->send();
+			    }
+			    catch(\EmailValidationFailedException $e)
+			    {
+			        echo $e->getMessage();
+			        // The validation failed
+			    }
+			    catch(\EmailSendingFailedException $e)
+			    {
+			        echo $e;
+			        // The driver could not send the email
+			    }
+		//end Send email
+
+		if ($user = Model_User::find($id))
+		{
+			$user->delete();
+
+			Session::set_flash('success', e('ignored user #'.$id));
 		}
 
 		else
 		{
-			Session::set_flash('error', e('Could not delete pending #'.$id));
+			Session::set_flash('error', e('Could not delete user #'.$id));
 		}
 
 		Response::redirect('admin/pendings');

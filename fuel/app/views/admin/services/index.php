@@ -15,10 +15,11 @@
 
 <table class="table table-striped">
 	<thead>
-		<tr>
+		<tr class= "danger">
 			<th>Medical Service Name</th>
 			<th>Types</th>
 			<th>Doctor</th>
+			<th>What to do?</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -28,7 +29,6 @@
 			<td><?php echo $item->types; ?></td>
 			<td><?php echo $item->doctor; ?></td>
 			<td>
-				<?php echo Html::anchor('admin/services/view/'.$item->id, 'View' , array('class' =>'btn btn-danger btn-transparent')); ?> 
 				<?php echo Html::anchor('admin/services/edit/'.$item->id, 'Edit' , array('class' =>'btn btn-danger btn-transparent')); ?> 
 				<?php echo Html::anchor('admin/services/delete/'.$item->id, 'Delete', array('class' =>'btn btn-danger btn-transparent','onclick' => "return confirm('Are you sure?')")); ?>
 

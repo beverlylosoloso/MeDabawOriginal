@@ -16,12 +16,12 @@
 		<div class="form-group">
 			<?php echo Form::label('Doctor', 'doctor', array('class'=>'control-label')); ?>
 
-				<?php echo Form::input('doctor', Input::post('doctor', isset($service) ? $service->field : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Doctor')); ?>
+				<?php echo Form::input('doctor', Input::post('doctor', isset($service) ? $service->doctor : ''), array('class' => 'col-md-4 form-control', 'placeholder'=>'Doctor')); ?>
 
 		</div>
 		<div class="form-group">
 			<label class='control-label'>&nbsp;</label>
-			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>	
+			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-danger btn-transparent')); ?>	
 		</div>
 	</fieldset>
 <?php echo Form::close(); ?>

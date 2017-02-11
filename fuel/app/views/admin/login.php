@@ -1,5 +1,9 @@
 <!-- BEGIN LOGIN BOX -->
 
+<div class="page-icon animated bounceInDown">   
+  <center><img src ="http://localhost/medabaw2/public/assets/img/Untitled-1.png" width="30%" height="30%" alt="Computer Hope"><img src ='http://localhost/medabaw2/public/assets/img/medabawlogo1.png' width='5%' height='5%' alt='Computer Hope'>
+</center><br><br>
+
 <script type="text/javascript">
 <!--
 
@@ -45,15 +49,9 @@ function updateClock ( )
 
 <div style="clear: both;"> </div>
 
-
-  <h1 id="clock" class="pull-right">11:30:29 PM</h1>
-  <br>
-  <br>
-  <br>
-
-
-<div class="page-icon animated bounceInDown">   
- <center><strong><h1>MeDabaw</h1></strong></center>
+ <center><?php echo date("l jS \of F Y ")."<h5 id='clock'>11:30:29 PM</h5>";?> </center>
+ <!-- <h4 id='clock'>11:30:29 PM <?php echo date("l jS \of F Y ")?></h4>
+  -->
   </div>
     <div class="container" id="login-block" border="5">
         <div class="row">
@@ -102,8 +100,8 @@ function updateClock ( )
 								<?php echo Form::submit(array('value'=>'Login', 'name'=>'submit', 'type'=> 'button','class' => 'btn btn-danger btn-transparent')); ?>
                                 <div class="nav navbar-nav pull-right">
                                      <?php echo Html::Anchor('signings/create', 'Register Now!', array('class' => 'btn btn-danger btn-transparent')); ?>
-                                 </div> <br><br><br>
-                                 <?php echo Html::anchor('admin/forgotpass/', ''); ?> 
+                                 </div> <br><br>
+                                 <?php echo Html::Anchor('forgots/checkemail', 'Forgot password?'); ?>                                
 							</div>
 						<?php echo Form::close(); ?>
                     </div>

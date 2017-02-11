@@ -90,6 +90,7 @@ class Controller_Admin_Medabaws extends Controller_Admin
 		// send email deactivate
 		$user = Model_User::find($id);
 			$user->pend = 'not activate';
+		
 			// Send Email
 				// Create an instance
 				$email = Email::forge();
@@ -103,7 +104,7 @@ class Controller_Admin_Medabaws extends Controller_Admin
 				$email->to($tmp_email, 'kim');
 
 				// Set a subject
-				$email->subject('This is the subject');
+				$email->subject('Informing');
 
 				// Set multiple to addresses
 
@@ -113,7 +114,7 @@ class Controller_Admin_Medabaws extends Controller_Admin
 				// ));
 
 				// And set the body.
-				$email->body("From: DOH \r\n Sorry you account has been deactivated, Please register again to this link(http://localhost/medabaw2/public/admin/login)");
+				$email->body("From: DOH - MeDabaw \r\n Sorry you account has been deactivated, Please register again to this link(http://localhost/medabaw2/public/admin/login)");
 
 				    try
 				    {

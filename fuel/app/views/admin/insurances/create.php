@@ -1,4 +1,4 @@
-<h2>New Insurances</h2>
+<h4>New Insurance</h4>
 <br>
 
 <?php echo render('admin/insurances/_form'); ?>

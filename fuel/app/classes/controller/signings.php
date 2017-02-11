@@ -39,7 +39,7 @@ class Controller_Signings extends Controller_Base
 				}
 				// var_dump($bool_check); die;
 				if ($bool_check == true) {
-
+					// upload image
 					$file_img = null;
 					// BEGIN UPLOAD IMAGE
 					// Custom configuration for this upload
@@ -49,9 +49,9 @@ class Controller_Signings extends Controller_Base
 					    'ext_whitelist' => array('img', 'jpg', 'jpeg', 'gif', 'png'),
 					);
 
-					$width=640;
-              		$height=480;
-					Image::factory()->load($filepath)->resize($width, $height)->save($filepath);
+					// $width=640;
+     //          		$height=480;
+					// Image::factory()->load($filepath)->resize($width, $height)->save($filepath);
 
 
 
@@ -68,22 +68,6 @@ class Controller_Signings extends Controller_Base
 
 					// }
 		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 					// process the uploaded files in $_FILES
 					Upload::process($config);
 
@@ -169,14 +153,14 @@ class Controller_Signings extends Controller_Base
 
 					    	// var_dump($savefile);
 					    }
-					     $filepath=$savefile['saved_to'].$savefile['saved_as'];
-					     $width=640;
-               			 $height=480;
+					     // $filepath=$savefile['saved_to'].$savefile['saved_as'];
+					     // $width=640;
+          //      			 $height=480;
   						
   						// Image::factory()->load($file(filename)epath) ->resize($width, $height) ->save($filepath);
 					    $file_img = $savefile['saved_as'];
-					    echo $file_img;
-					    Image::load('filename.gif')->preset('mypreset', $filepath);
+					    // echo $file_img;
+					    // Image::load('filename.gif')->preset('mypreset', $filepath);
 					}
 
 

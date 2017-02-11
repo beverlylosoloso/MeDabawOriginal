@@ -1,5 +1,19 @@
-<h2>List of Hospitals and Clinics Registered</h2>
-<br>
+<h3>List of Hospitals and Clinics Registered</h3>
+
+					<?php 	$data['users'] = DB::select('*')->from('users')->where('pend', 'activate')->as_object()->execute();
+									$counter = 0;
+									foreach ($data['users'] as $item) 
+									{
+											$counter ++;
+										
+									}
+									
+										echo 'Number of Hospitals and Clinics Registered : ' . $counter ;
+
+										?>
+
+
+<br><br><br>
 <?php if ($users): ?>
 	<?php echo Form::open(array("class"=>"form-horizontal", "action" => 'admin/medabaws')); ?>
 						<fieldset>
@@ -15,12 +29,12 @@
 				<?php echo Form::open(array("class"=>"form-horizontal")); ?>
 <table class="table table-striped">
 	<thead>
-		<tr>
+		<tr class = "danger">
 			<th>Hospital Name</th>
 			<th>Address</th>
 			<th>Email</th>
 			<th>Contact Number</th>
-			<th></th>
+			<th>What to do?</th>
 		</tr>
 	</thead>
 	<tbody>

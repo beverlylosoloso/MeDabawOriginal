@@ -1,41 +1,6 @@
 
 <?php 
-// Create an instance
-// $email = Email::forge();
 
-// // Set the from address
-// $email->from('edzel.abliter@jmc.edu.ph', 'Beba ng');
-
-// // Set the to address
-// $email->to('edzel.abliter@jmc.edu.ph', 'kim');
-
-// // Set a subject
-// $email->subject('This is the subject');
-
-// // Set multiple to addresses
-
-// // $email->to(array(
-// //     'example@mail.com',
-// //     'another@mail.com' => 'With a Name',
-// // ));
-
-// // And set the body.
-// $email->body('I love my honey');
-
-//     try
-//     {
-//         $email->send();
-//     }
-//     catch(\EmailValidationFailedException $e)
-//     {
-//         echo $e->getMessage();
-//         // The validation failed
-//     }
-//     catch(\EmailSendingFailedException $e)
-//     {
-//         echo $e;
-//         // The driver could not send the email
-//     }
 ?>
 
 <h2>List of Users</h2>
@@ -53,7 +18,7 @@
 				<?php echo Form::open(array("class"=>"form-horizontal")); ?>
 <table class="table table-striped">
 	<thead>
-		<tr>
+		<tr class = "danger">
 			<th>Username</th>
 			<th>Role</th>
 			<th></th>

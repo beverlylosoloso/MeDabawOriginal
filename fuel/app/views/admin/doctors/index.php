@@ -16,10 +16,11 @@
 				<?php echo Form::open(array("class"=>"form-horizontal")); ?>
 <table class="table table-striped">
 	<thead>
-		<tr>
+		<tr class = " danger">
 			<th>Name</th>
 			<th>Field</th>
 			<th>Specialization</th>
+			<th>What to do?</th>
 		</tr>
 	</thead>
 	<tbody>

@@ -1,15 +1,15 @@
-<h2>Pending Hospitals and Clinics</h2>
+<h3>List of Pending Hospitals and Clinics</h3>
 <br> 
 
 <?php if ($registereds): ?>
 <table class="table table-striped">
 	<thead>
-		<tr>
-			<th>Username</th>
+		<tr class="danger">
+			<th>Hospital Name</th>
 			<th>Address</th>
-			<th>Email</th>
-			<th>Contact Number</th>
-			<th></th>
+			<th>License</th>
+			<th>Chief of the Establishment</th>
+			<th>What to do?</th>
 		</tr>
 	</thead>
 	<tbody> 
@@ -18,12 +18,14 @@
 <?php foreach ($users as $item): ?>		<tr>	
 	<?php if ($item->toggle == '0'): ?>
 		
-		<td><?php echo $item->username; ?></td>
+		<td><?php echo $item->hospital_name; ?></td>
 		<td><?php echo $item->address; ?></td>
-		<td><?php echo $item->email; ?></td>
-		<td><?php echo $item->contact_number; ?></td>
+		<td><?php echo $item->license; ?></td>
+		<td><?php echo $item->chief; ?></td>
 		<td>
 			<?php echo Html::anchor('admin/pendings/edit/'.$item->id, 'Accept',array('class' => 'btn btn-danger btn-transparent')); ?> 
+			<?php echo Html::anchor('admin/pendings/delete/'.$item->id, 'Ignore',array('class' => 'btn btn-danger btn-transparent')); ?> 
+
 		</td>
 	<?php endif ?>
 		
@@ -35,7 +37,7 @@
 	</tbody>
 </table> <br><br><br>
 
-<center><h2>Registered in Davao City</h2></center>
+<h3>List of Registered Hospitals and Clinics in Davao City</h3>
 	<?php echo Form::open(array("class"=>"form-horizontal", "action" => 'admin/pendings')); ?>
 						<fieldset>
 							<div class="form-group ">
@@ -49,13 +51,12 @@
 				<?php echo Form::open(array("class"=>"form-horizontal")); ?>
 <table class="table table-striped">
 	<thead>
-		<tr>
+		<tr class = "danger">
 			<th>Name of the Hospital/Clinic</th>
 			<th>Address</th>
 			<th>Contact Number</th>
 			<th>License No.</th>
 			<th>Chief of the Hospital/Clinic</th>
-			<th></th>
 		</tr>
 	</thead>
 	<tbody>

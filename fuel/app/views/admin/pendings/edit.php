@@ -1,4 +1,4 @@
-<h2>Editing Pending</h2>
+
 <br>
 
 <?php echo render('admin/pendings/_form'); ?>

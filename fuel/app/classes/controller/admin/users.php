@@ -1,13 +1,9 @@
-	<?php
+ <?php
 class Controller_Admin_Users extends Controller_Admin
 {
 
 	public function action_index()
 	{
-		// start image configuration
-			$image = Image::forge();
-			var_dump($image);die;
-		// end image configuration
 		$search = "";
 		if (Input::method() == 'POST')
 		{
@@ -26,7 +22,7 @@ class Controller_Admin_Users extends Controller_Admin
 		$this->template->content = View::forge('admin/users/index', $data);
 
 	}
-// start json
+// start json_decode(json)
 	public function action_json(){
 		$arrjson_result = array();
 		
@@ -41,7 +37,7 @@ class Controller_Admin_Users extends Controller_Admin
 		// 	die;
 		
 		// var_dump($arr_services);die;
-		echo "</br>";
+		// echo "</br>";
 		
 		// var_dump($data['users']);
 		// $arr = array("bevery","kim","Love");
@@ -91,7 +87,7 @@ class Controller_Admin_Users extends Controller_Admin
 			}
 				$arrResult = array(
 					'username' => $user->username,
-					'hospital name' => $user->hospital_name,
+					'hospital_name' => $user->hospital_name,
 					'license' => $user->license,
 					'chief' => $user->chief,
 					'email' => $user->email,
@@ -247,7 +243,7 @@ class Controller_Admin_Users extends Controller_Admin
 	public function action_view($id = null)
 	{
 		$data['user'] = Model_User::find($id);
-		$this->template->title = "User";
+		$this->template->title = "";
 		$this->template->content = View::forge('admin/users/view', $data);
 
 	}
@@ -279,7 +275,7 @@ class Controller_Admin_Users extends Controller_Admin
 
 				if ($user and $user->save())
 				{
-					Session::set_flash('success', e('Added user #'.$user->id.'.'));
+					Session::set_flash('success', e('Added user #'.$user->hospital_name.'.'));
 
 					Response::redirect('admin/users');
 				}
@@ -307,8 +303,48 @@ class Controller_Admin_Users extends Controller_Admin
 		$user = Model_User::find($id);
 		$val = Model_User::validate('edit');
 
+					
+
 		if ($val->run())
 		{
+
+			// upload image
+					$file_img = null;
+					// BEGIN UPLOAD IMAGE
+					// Custom configuration for this upload
+					$config = array(
+					    'path' =>'assets/img',
+					    'randomize' => true,
+					    'ext_whitelist' => array('img', 'jpg', 'jpeg', 'gif', 'png'),
+					);
+					// process the uploaded files in $_FILES
+					Upload::process($config);
+
+					// if there are any valid files
+					if (Upload::is_valid())
+					{
+					    // save them according to the config
+					    Upload::save();
+					    // call a model method to update the database
+					   
+					    $file = Upload::get_files();
+					    foreach ($file as $savefile) {
+					    	
+					    }
+					    $file_img = $savefile['saved_as'];
+					  
+					}
+ 					
+					// and process any errors
+					foreach (Upload::get_errors() as $file)
+					{
+					    // $file is an array with all file information,
+					    // $file['errors'] contains an array of all error occurred
+					    // each array element is an an array containing 'error' and 'message'
+					}
+					// END UPLOAD IMAGE
+
+
 			$user->username = Input::post('username');
 			$user->password = Auth::instance()->hash_password(Input::post('password'));
 			$user->hospital_name = Input::post('hospital_name');
@@ -319,19 +355,20 @@ class Controller_Admin_Users extends Controller_Admin
 			$user->contact_number = Input::post('contact_number');
 			$user->address = Input::post('address');
 			$user->website = Input::post('website');
+			$user->image = $file_img;
 			$user->role_id = Input::post('role_id');
 			
 
 			if ($user->save())
 			{
-				Session::set_flash('success', e('Updated user #' . $id));
+				Session::set_flash('success', e('You have Successfully Updated your Account'));
 
 				Response::redirect('admin/infos');
 			}
 
 			else
 			{
-				Session::set_flash('error', e('Could not update user #' . $id));
+				Session::set_flash('error', e('Could not Update your Account'));
 			}
 		}
 
@@ -357,7 +394,7 @@ class Controller_Admin_Users extends Controller_Admin
 			$this->template->set_global('user', $user, false);
 		}
 
-		$this->template->title = "Users";
+		$this->template->title = "";
 		$this->template->content = View::forge('admin/users/edit');
 
 	}
@@ -368,12 +405,12 @@ class Controller_Admin_Users extends Controller_Admin
 		{
 			$user->delete();
 
-			Session::set_flash('success', e('Deleted user #'.$id));
+			Session::set_flash('success', e('Deleted '.$user->hospital_name));
 		}
 
 		else
 		{
-			Session::set_flash('error', e('Could not delete user #'.$id));
+			Session::set_flash('error', e('Could not delete '.$user->hospital_name));
 		}
 
 		Response::redirect('admin/users');

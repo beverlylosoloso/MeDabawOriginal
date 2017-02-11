@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta content="" name="description" />
     <meta content="themes-lab" name="author" />
-	<title><?php echo $title;?></title>
 
 
 	<!-- links -->
@@ -40,7 +39,7 @@
 <body  class="login fade-in" data-page="	">
 
 	<?php if ($current_user): ?>
-	<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #87f2bb; text-color:black ">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -61,10 +60,10 @@
 						foreach($files as $file)
 						{ 
 							$section_segment = $file->getBasename('.php');
-							
+						
 							//START DOH ACCESS
 							if ($current_user->role_id == 2) {
-								if ($section_segment == "registereds" || $section_segment == "pendings" || $section_segment == "infos" || $section_segment == "medabaws" || $section_segment == "deactivates" ) {
+								if ($section_segment == "registereds" || $section_segment == "pendings" || $section_segment == "infos" || $section_segment == "medabaws" || $section_segment == "deactivates" || $section_segment == "reports") {
 									
 									if(Inflector::humanize($section_segment) == "Registereds"){
 										$section_title = "Registered in Davao City";
@@ -80,7 +79,7 @@
 										}
 									}
 									
-										$section_title = "List of Pendings" . '<span class="pull col-sm-2 label label-primary">' . $counter . '</span>';
+										$section_title = "List of Pendings" . '<span class="pull col-sm-3 label label-danger">' . $counter . '</span>';
 
 										?>
 
@@ -88,11 +87,11 @@
 										
 
 									}elseif(Inflector::humanize($section_segment) == "Infos"){
-										$section_title = "Personal Information";
+										$section_title = "Profile";
 									}elseif(Inflector::humanize($section_segment) == "Medabaws"){
 										$section_title = "Registered in MeDabaw ";
 									}elseif(Inflector::humanize($section_segment) == "Deactivates"){
-										$section_title = "Deactivated Hospitals";
+										$section_title = "Deactivated Establishment";
 									}else{
 										$section_title = Inflector::humanize($section_segment);
 									}
@@ -126,11 +125,11 @@
 									
 
 									if(Inflector::humanize($section_segment) == "Doctors"){
-										$section_title = "Hospital  Doctor";
+										$section_title = "Doctor";
 									}elseif(Inflector::humanize($section_segment) == "Infos"){
-										$section_title = "Hospital  Information";
+										$section_title = "Profile";
 									}elseif(Inflector::humanize($section_segment) == "Insurances"){
-										$section_title = "Hospital  Insurances";
+										$section_title = "Insurances";
 									}elseif(Inflector::humanize($section_segment) == "Services"){
 										$section_title = "Medical  Services Offered ";
 									}else{
@@ -174,7 +173,7 @@
 					$title = "User";
 					echo $title;
 				}else{
-					echo $title;
+					// echo $title;
 				} ?>
 				</h1>
 				<hr>

@@ -1,5 +1,17 @@
-<h2>List of Registered Hospitals and Clinics in Davao City</h2>
-<br>
+<h3>List of Registered Hospitals and Clinics in Davao City</h3>
+
+			<?php $data['registereds'] = Model_Registered::find('all');
+									$counter = 0;
+									foreach ($data['registereds'] as $item) 
+									{
+											$counter ++;
+									}
+									
+									echo 'Number of Registered Hospitals and Clinics in Davao City :' . $counter ;
+
+										?>
+
+<br><br><br>
 <?php if ($registereds): ?>
 	<?php echo Form::open(array("class"=>"form-horizontal", "action" => 'admin/registereds')); ?>
 						<fieldset>
@@ -16,13 +28,13 @@
 			<h4>As of 2016</h4>
 <table class="table table-striped">
 	<thead>
-		<tr>
+		<tr class="danger">
 			<th>Name of the Hospital/Clinic</th>
 			<th>Address</th>
 			<th>Contact Number</th>
 			<th>License No.</th>
 			<th>Chief of the Hospital/Clinic</th>
-			<th></th>
+			<th>What to do?</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -30,7 +42,6 @@
 <?php foreach ($registereds as $item): ?>
 <?php $counter++;  ?>
 		<tr>
-
 			<td><?php echo $counter.". ". $item->name; ?></td>
 			<td><?php echo $item->address; ?></td>
 			<td><?php echo $item->contact; ?></td>

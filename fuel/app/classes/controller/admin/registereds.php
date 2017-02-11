@@ -47,14 +47,14 @@ class Controller_Admin_Registereds extends Controller_Admin
 
 				if ($registered and $registered->save())
 				{
-					Session::set_flash('success', e('Added registered #'.$registered->id.'.'));
+					Session::set_flash('success', e('Added '.$registered->name.'.'));
 
 					Response::redirect('admin/registereds');
 				}
 
 				else
 				{
-					Session::set_flash('error', e('Could not save registered.'));
+					Session::set_flash('error', e('Could not save '.$registered->name));
 				}
 			}
 			else
@@ -83,14 +83,14 @@ class Controller_Admin_Registereds extends Controller_Admin
 
 			if ($registered->save())
 			{
-				Session::set_flash('success', e('Updated registered #' . $id));
+				Session::set_flash('success', e('Updated ' . $registered->name));
 
 				Response::redirect('admin/registereds');
 			}
 
 			else
 			{
-				Session::set_flash('error', e('Could not update registered #' . $id));
+				Session::set_flash('error', e('Could not update ' . $registered->name));
 			}
 		}
 

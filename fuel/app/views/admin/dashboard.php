@@ -8,8 +8,7 @@
        #map {
         width: 100%;
         height: 400px;
-      }
-      
+      }  
     </style>
   </head>
   <body>
@@ -60,8 +59,6 @@
     </script> 
   </body>
 </html>
-
-
 <?php elseif($current_user->role_id == 2): ?>
   <!DOCTYPE html>
 <html>
@@ -110,7 +107,6 @@
                               'Error: The Geolocation service failed.' :
                               'Error: Your browser doesn\'t support geolocation.');
       }
-
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBwPK1XH19ieyxJZ0QlDL6z2n6JOF83h8&callback=initMap">

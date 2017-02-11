@@ -63,11 +63,15 @@
                 <?php echo Form::input('address', Input::post('address', isset($user) ? $user->group : '100'), array('class' => 'col-md-4 form-control', 'placeholder'=>'Group')); ?>
 
         </div> -->
-        
+    
     <input id="pac-input" class="controls" type="text"
         placeholder="Enter a location">
+    <div class="form-group">
+      <?php echo Form::label('Address', 'address', array('class'=>'control-label')); ?><br>
+
+      <input id="searchTextField" type="text" size="50" name="address" placeholder="Enter your address" autocomplete="on" runat="server" />  
    
-    <input id="searchTextField" type="text" size="50" name="address" placeholder="Enter your address" autocomplete="on" runat="server" />  
+    </div>
     <input  id="city2" name="city2" type = 'hidden' />
     <input  id="cityLat" name="hospital_latitude" type = 'hidden' />
     <input  id="cityLng" name="hospital_longitude" type = 'hidden' />

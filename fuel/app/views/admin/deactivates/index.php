@@ -1,5 +1,20 @@
-<h2>Deactivated Hospitals</h2>
-<br>
+<h3>List of Deactivated Hospitals and Clinics</h3>
+
+						<?php $data['users'] = DB::select('*')->from('users')->where('pend', 'not activate')->as_object()->execute();
+									$counter = 0;
+									foreach ($data['users'] as $item) 
+									{
+										if($item->toggle == '1')
+										{
+											$counter ++;
+										}
+									}
+									
+										echo 'Number of Hospitals And Clinics Deactivated : ' . $counter . '</span>';
+
+										?>		
+
+<br><br><br>
 <?php if ($users): ?>
 	<?php echo Form::open(array("class"=>"form-horizontal", "action" => 'admin/deactivates')); ?>
 						<fieldset>
@@ -14,21 +29,22 @@
 						
 				<?php echo Form::open(array("class"=>"form-horizontal")); ?>
 <table class="table table-striped">
+	
 	<thead>
-		<tr>
+		<tr class = "danger">
 			<th>Hospital Name</th>
 			<th>Address</th>
 			<th>Email</th>
 			<th>Contact Number</th>
-			<th></th>
 		</tr>
 	</thead>
 	<tbody>
 <?php $counter = 0; ?>
-<?php foreach ($users as $item): ?>		<tr>
-	<?php if ($item->pend == 'not activate'): ?>
+<?php foreach ($users as $item): ?>		
+	<tr>
+	<?php if ($item->pend == 'not activate' && $item->toggle == 1): ?>
 	<?php $counter++; ?>
-		<td><?php echo $counter.". ". $item->hospital_name; ?></td>
+		<td ><?php echo $counter.". ". $item->hospital_name; ?></td>
 		<td><?php echo $item->address; ?></td>
 		<td><?php echo $item->email; ?></td>
 		<td><?php echo $item->contact_number; ?></td>

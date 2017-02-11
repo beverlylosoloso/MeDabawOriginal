@@ -1,4 +1,4 @@
-<h2>Editing Insurance</h2>
+
 <br>
 
 <?php echo render('admin/insurances/_form'); ?>

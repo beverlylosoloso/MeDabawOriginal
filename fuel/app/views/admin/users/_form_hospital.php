@@ -2,6 +2,8 @@
 
 	<fieldset>
 
+		
+
 		<div class="form-group">
 			<?php echo Form::label('Username', 'username', array('class'=>'control-label')); ?>
 

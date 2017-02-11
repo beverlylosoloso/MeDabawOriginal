@@ -44,14 +44,14 @@ class Controller_Admin_Insurances extends Controller_Admin
 
 				if ($insurance and $insurance->save())
 				{
-					Session::set_flash('success', e('Added insurance #'.$insurance->id.'.'));
+					Session::set_flash('success', e('Added '.$insurance->insurance_name.'.'));
 
 					Response::redirect('admin/insurances');
 				}
 
 				else
 				{
-					Session::set_flash('error', e('Could not save insurancce.'));
+					Session::set_flash('error', e('Could not save insurance.'));
 				}
 			}
 			else
@@ -60,7 +60,7 @@ class Controller_Admin_Insurances extends Controller_Admin
 			}
 		}
 
-		$this->template->title = "Insurances";
+		$this->template->title = "";
 		$this->template->content = View::forge('admin/insurances/create');
 
 	}
@@ -76,14 +76,14 @@ class Controller_Admin_Insurances extends Controller_Admin
 
 			if ($insurance->save())
 			{
-				Session::set_flash('success', e('Updated insurance #' . $id));
+				Session::set_flash('success', e('Updated ' . $insurance->insurance_name));
 
 				Response::redirect('admin/insurances');
 			}
 
 			else
 			{
-				Session::set_flash('error', e('Could not update insurance #' . $id));
+				Session::set_flash('error', e('Could not update ' . $insurance->insurance_name));
 			}
 		}
 
@@ -100,7 +100,7 @@ class Controller_Admin_Insurances extends Controller_Admin
 			$this->template->set_global('insurance', $insurance, false);
 		}
 
-		$this->template->title = "Insurances";
+		$this->template->title = "";
 		$this->template->content = View::forge('admin/insurances/edit');
 
 	}
@@ -111,12 +111,12 @@ class Controller_Admin_Insurances extends Controller_Admin
 		{
 			$insurance->delete();
 
-			Session::set_flash('success', e('Deleted insurance #'.$id));
+			Session::set_flash('success', e('Deleted'.$insurance->insurance_name));
 		}
 
 		else
 		{
-			Session::set_flash('error', e('Could not delete insurance #'.$id));
+			Session::set_flash('error', e('Could not delete '.$insurance->insurance_name));
 		}
 
 		Response::redirect('admin/insurances');

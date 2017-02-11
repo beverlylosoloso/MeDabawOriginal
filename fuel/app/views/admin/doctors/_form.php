@@ -25,7 +25,7 @@
 		 
 		<div class="form-group">
 			<label class='control-label'>&nbsp;</label>
-			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-danger btn-transparent')); ?>	
+			<?php echo Form::submit('submit', 'Save', array( 'type' => 'button','class' => ' btn btn-danger btn-transparent')); ?>	
 		</div>
 	</fieldset>
 <?php echo Form::close(); ?>

@@ -1,7 +1,18 @@
-<?php echo Form::open(array("class"=>"form-horizontal")); ?>
+<?php echo Form::open(array("class"=>"form-horizontal",'enctype' => 'multipart/form-data')); ?>
 	<fieldset>
 		<!-- check if user is doh -->
 		<?php if ($current_user->username == "Department of Health"){ ?>
+
+
+		<!-- begin upload image -->
+        <div class="form-group">
+
+                <?php echo Form::label('Upload Image', 'upload_image', array('class'=>'control-label')); ?>
+                <?php echo Form::input(array('type' => 'file', 'name' => 'image','required' => 'resize','200')); ?>
+
+      </div>
+        <!-- end upload image -->
+
 			<div class="form-group">
 				<?php echo Form::label('Username', 'username', array('class'=>'control-label')); ?>
 
@@ -77,7 +88,7 @@
 
 				<div>
 					<label class='control-label'>&nbsp;</label>
-					<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>		
+					<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-danger btn-transparent')); ?>		
 				</div>
 				
 		 <!-- end button save-->
@@ -121,6 +132,14 @@
 		<?php }else{ ?>
 		<!-- end check if user is doh -->
 
+		<!-- begin upload image -->
+        <div class="form-group">
+
+                <?php echo Form::label('Upload Image', 'upload_image', array('class'=>'control-label')); ?>
+                <?php echo Form::input(array('type' => 'file', 'name' => 'image','required' => 'resize','200')); ?>
+
+        </div>
+        <!-- end upload image -->
 
 
 		<div class="form-group">
@@ -202,8 +221,13 @@
 		</div>
 
 		<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
-	    <input id="searchTextField" type="text" size="50" name="address" placeholder="Enter your address" autocomplete="on" runat="server" />  
-	    <input  id="city2" name="city2" type = 'hidden' />
+	   <div class="form-group">
+      <?php echo Form::label('Address', 'address', array('class'=>'control-label')); ?><br>
+
+      <input id="searchTextField" type="text" size="50" name="address" placeholder="Enter your address" autocomplete="on" runat="server" />  
+   
+    </div>
+   	    <input  id="city2" name="city2" type = 'hidden' />
 	    <input  id="cityLat" name="hospital_latitude" type = 'hidden' />
 	    <input  id="cityLng" name="hospital_longitude" type = 'hidden' />
 	    <!-- <input type="submit" value="submit"> -->
@@ -232,7 +256,7 @@
 			
 		<div>
 			<label class='control-label'>&nbsp;</label>
-			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>		
+			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-danger btn-transparent')); ?>		
 		</div>
 	<?php } ?>
 	    <script>

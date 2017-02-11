@@ -24,7 +24,7 @@ class Controller_Admin_Services extends Controller_Admin
 	{
 		$data['service'] = Model_Service::find($id);
 
-		$this->template->title = "Services";
+		$this->template->title = "";
 		$this->template->content = View::forge('admin/services/view', $data);
 
 	}
@@ -46,7 +46,7 @@ class Controller_Admin_Services extends Controller_Admin
 
 				if ($service and $service->save())
 				{
-					Session::set_flash('success', e('Added service #'.$service->id.'.'));
+					Session::set_flash('success', e('Added '.$service->service_name.'.'));
 
 					Response::redirect('admin/services');
 				}
@@ -80,14 +80,14 @@ class Controller_Admin_Services extends Controller_Admin
 			
 			if ($service->save())
 			{
-				Session::set_flash('success', e('Updated service #' . $id));
+				Session::set_flash('success', e('Updated ' . $service->service_name));
 
 				Response::redirect('admin/services');
 			}
 
 			else
 			{
-				Session::set_flash('error', e('Could not update service #' . $id));
+				Session::set_flash('error', e('Could not update ' . $service->service_name));
 			}
 		}
 
@@ -117,12 +117,12 @@ class Controller_Admin_Services extends Controller_Admin
 		{
 			$service->delete();
 
-			Session::set_flash('success', e('Deleted service #'.$id));
+			Session::set_flash('success', e('Deleted '.$service->service_name));
 		}
 
 		else
 		{
-			Session::set_flash('error', e('Could not delete service #'.$id));
+			Session::set_flash('error', e('Could not delete '.$service->service_name));
 		}
 
 		Response::redirect('admin/services');

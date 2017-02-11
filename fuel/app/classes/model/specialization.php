@@ -17,16 +17,7 @@ class Model_Specialization extends \Orm\Model
 		),
 	);
 
-	protected static $_belongs_to = array(
-		'user' => array(
-			'model_to' => 'Model_User',
-			'key_from' => 'hospital_id',
-			'key_to' => 'id',
-			'cascade_delete' => false,
-		),
-	); 
-
-
+	
 	public static function validate($factory)
 	{
 		$val = Validation::forge($factory);

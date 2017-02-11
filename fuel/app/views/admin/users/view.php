@@ -1,4 +1,4 @@
-<h2>Viewing #<?php echo $user->id; ?></h2>
+
 <p>
 	<strong>Username:</strong>
 	<?php echo Asset::img('hospital_image/'. $user->image); ?></p>

@@ -1,5 +1,3 @@
-<h2>Viewing #<?php echo $insurance->id; ?></h2>
-
 <p>
 	<strong>Insurance Name:</strong>
 	<?php echo $insurance->insurance_name; ?></p>

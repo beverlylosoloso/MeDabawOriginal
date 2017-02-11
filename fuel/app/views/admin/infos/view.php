@@ -1,4 +1,3 @@
-<h2>Viewing #<?php echo $info->id; ?></h2>
 
 <p>
 	<strong>Username:</strong>

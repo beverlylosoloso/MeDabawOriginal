@@ -1,11 +1,8 @@
 <br>
 <?php if ($infos): ?>
-<?php Image::load('filename.gif')
-    ->config('bgcolor', '#f00')
-    ->resize(100, 100, true, true);6 ?>
 <table class="table table-striped">
 	<thead>
-		<tr>
+		<tr class = "danger">
 			<th>Username</th>
 			<th>Role</th>
 			<th></th>
@@ -32,18 +29,17 @@
 	<?php if ($user->id == $current_user->id): ?>
 		<?php if ($user->username == "Department of Health"){ ?>
 
+		 <img src="http://localhost/medabaw2/public/assets/img/<?= $user->image ?>"  width="1200" height="400" alt="Computer Hope"> <br><br>
 			<p>Username : <?php echo $user->username?></p></br>
 			<p>Website : <?php echo $user->website?></p></br>
 			<p>Email : <?php echo $user->email?></p></br>
 			<p>Contact number : <?php echo $user->contact_number?></p></br>
 			<td><?php echo Html::anchor('admin/users/edit/'.$user->id, 'Update', array('class' => 'btn btn-danger btn-transparent')); ?> </td>
 		<?php }else{ ?>
-		   
 		   <!-- echo Asset::img('logo.png', array('id' => 'logo')); -->
 		   <?php
-		   	
 		   ?>
-		   <img src="http://localhost/medabaw2/public/assets/img/<?= $user->image ?>"  width="100%" height="100%" alt="Computer Hope">
+		   <img src="http://localhost/medabaw2/public/assets/img/<?= $user->image ?>"  width="1200" height="400" alt="Computer Hope">
 			<p><?php //echo Asset::img($user->image);?></p></br> 
 			<p>Username : <?php echo $user->username?></p></br>
 			<p>Hospital Name : <?php echo $user->hospital_name?></p></br>
